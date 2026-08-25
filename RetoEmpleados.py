@@ -3,6 +3,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler, LabelEncoder
+from sklearn.decomposition import PCA
 
 # ------------ Fin de las Importaciones
 
@@ -104,6 +105,13 @@ print(f"cantidad de variables seleccionadas ({len(variables_seleccionadas)}):")
 print(variables_seleccionadas)
 EmpleadosAttritionFinal.shape
 
-# ------------ 
+# ------------ 16. Crea una nueva variable llamada EmpleadosAttritionPCA formada por los componentes principales del frame EmpleadosAttritionFinal. Recuerda que el resultado del proceso PCA es un numpy array, por lo que, para hacer referencia a una columna, por ejemplo, la 0, puedes usar la instrucción EmpleadosAttritionPCA[:,0]).
+
+pca = PCA()
+EmpleadosAttritionPCA = pca.fit_transform(EmpleadosAttritionFinal)
+type(EmpleadosAttritionPCA), EmpleadosAttritionPCA.shape
+
+EmpleadosAttritionPCA[:, 0][:5]
+
 # ------------ 
 # ------------ 
