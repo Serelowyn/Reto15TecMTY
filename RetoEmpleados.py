@@ -2,6 +2,7 @@
 
 import pandas as pd
 import numpy as np
+from sklearn.preprocessing import MinMaxScaler
 
 # ------------ Fin de las Importaciones
 
@@ -64,7 +65,14 @@ SueldoPromedioDepto = (EmpleadosAttrition.groupby("Department")["MonthlyIncome"]
 
 SueldoPromedioDepto
 
-# ------------ 
+# ------------ 12. La variable MonthlyIncome tiene un valor numérico muy grande comparada con las otras variables. Escala dicha variable para que tenga un valor entre 0 y 1. 
+
+scaler = MinMaxScaler()
+EmpleadosAttrition["MonthlyIncome"] = scaler.fit_transform(
+    EmpleadosAttrition[["MonthlyIncome"]]
+)
+EmpleadosAttrition["MonthlyIncome"].describe()
+
 # ------------ 
 # ------------ 
 # ------------ 
