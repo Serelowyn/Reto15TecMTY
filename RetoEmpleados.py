@@ -91,7 +91,15 @@ for col in variables_categoricas:
 correlaciones = EmpleadosAttrition.corr()["Attrition"].sort_values(key=abs, ascending=False)
 correlaciones
 
-# ------------ 
+# ------------ 15. Selecciona solo aquellas variables que tengan una correlación mayor o igual a 0.1, dejándolas en otro frame llamado EmpleadosAttritionFinal. No olvides mantener la variable de salidaAttrition; esto es equivalente a borrar las que no cumplen con el límite.
+
+limite = 0.1
+variables_seleccionadas = correlaciones[correlaciones >= limite].index.tolist()
+
+if "Attrition" not in variables_seleccionadas:
+    variables_seleccionadas.append("Attrition")
+
+variables_seleccionadas
 # ------------ 
 # ------------ 
 # ------------ 
