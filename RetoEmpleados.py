@@ -99,7 +99,11 @@ variables_seleccionadas = correlaciones[correlaciones >= limite].index.tolist()
 if "Attrition" not in variables_seleccionadas:
     variables_seleccionadas.append("Attrition")
 
-variables_seleccionadas
+EmpleadosAttritionFinal = EmpleadosAttrition[variables_seleccionadas].copy()
+print(f"cantidad de variables seleccionadas ({len(variables_seleccionadas)}):")
+print(variables_seleccionadas)
+EmpleadosAttritionFinal.shape
+
 # ------------ 
 # ------------ 
 # ------------ 
