@@ -14,3 +14,19 @@ EmpleadosAttrition.shape
 EmpleadosAttrition.head()
 EmpleadosAttrition.dtypes
 EmpleadosAttrition.info()
+
+# ------------ 3. se eliminan las columnas irrelevantes del df
+
+columnas_irrelevantes = ["EmployeeCount", "EmployeeNumber", "Over18", "StandardHours"]
+EmpleadosAttrition = EmpleadosAttrition.drop(columns=columnas_irrelevantes)
+
+"""se confirma la eliminacion de las columnas que no se necesitan"""
+EmpleadosAttrition.shape
+
+# ------------ 
+
+
+# ------------ 
+# ------------ 
+# ------------ 
+# ------------ 
