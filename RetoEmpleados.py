@@ -40,5 +40,25 @@ EmpleadosAttrition["Year"] = (EmpleadosAttrition["HiringDate"].str.split("/").st
 EmpleadosAttrition["YearsAtCompany"] = 2018 - EmpleadosAttrition["Year"]
 EmpleadosAttrition[["HiringDate", "Year", "YearsAtCompany"]].head()
 
+# ------------ 7. La DistanceFromHome está dada en kilómetros, pero tiene las letras “km” al final y así no puede ser entera.
+
+EmpleadosAttrition = EmpleadosAttrition.rename(
+    columns={"DistanceFromHome": "DistanceFromHome_km"}
+)
+
+# ------------ 8. Renombra la variable DistanceFromHome a DistanceFromHome_km.
+
+EmpleadosAttrition["DistanceFromHome"] = (EmpleadosAttrition["DistanceFromHome_km"].str.replace(" km", "", regex=False).astype(int))
+
+"""esto me garantiza que se puede conservar una columna donde aparezca la cantidad numerica y ademas especificar que son kilometros, y tambien una donde unicamente aparezca el dato numerico sin el string"""
+EmpleadosAttrition[["DistanceFromHome_km", "DistanceFromHome"]].head()
+
+# ------------ 
+# ------------ 
+# ------------ 
+# ------------ 
+# ------------ 
+# ------------ 
+# ------------ 
 # ------------ 
 # ------------ 
