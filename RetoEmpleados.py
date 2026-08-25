@@ -31,7 +31,10 @@ fechas_invalidas = EmpleadosAttrition["HiringDate"][
 
 print(fechas_invalidas.tolist())#hay una fecha que dice un dia que no existe, como solo se requiere saber la antiguedad en base al año, no se le hara nada
 
-# ------------ 
+# ------------ 5. Crea una columna llamada Year y obtén el año de contratación del empleado a partir de su fecha ‘HiringDate’. No se te olvide que debe ser un entero.
+
+EmpleadosAttrition["Year"] = (EmpleadosAttrition["HiringDate"].str.split("/").str[-1].astype(int))
+
 # ------------ 
 # ------------ 
 # ------------ 
