@@ -23,8 +23,13 @@ EmpleadosAttrition = EmpleadosAttrition.drop(columns=columnas_irrelevantes)
 """se confirma la eliminacion de las columnas que no se necesitan"""
 EmpleadosAttrition.shape
 
-# ------------ 
+# ------------ 4. antiguedad "HiringDate" viene en formato m/d/aaaa, no esta estandarizada, con y sin ceros a la izquierda.
 
+fechas_invalidas = EmpleadosAttrition["HiringDate"][
+    pd.to_datetime(EmpleadosAttrition["HiringDate"], format="%m/%d/%Y", errors="coerce").isna()
+]
+
+print(fechas_invalidas.tolist())#hay una fecha que dice un dia que no existe, como solo se requiere saber la antiguedad en base al año, no se le hara nada
 
 # ------------ 
 # ------------ 
