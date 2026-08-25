@@ -58,7 +58,12 @@ EmpleadosAttrition[["DistanceFromHome_km", "DistanceFromHome"]].head()
 EmpleadosAttrition = EmpleadosAttrition.drop(columns=["Year", "HiringDate", "DistanceFromHome_km"])
 EmpleadosAttrition.columns
 
-# ------------ 
+# ------------ 11. Aprovechando los ajustes que se están haciendo, la empresa desea saber si todos los departamentos tienen un ingreso promedio similar. Genera una nuevo frame llamado SueldoPromedioDepto que contenga el MonthlyIncome promedio por departamento de los empleados y colócalo en una variable llamada SueldoPromedio. Esta tabla solo es informativa, no la vas a utilizar en el set de datos que estás construyendo.
+
+SueldoPromedioDepto = (EmpleadosAttrition.groupby("Department")["MonthlyIncome"].mean().reset_index(name="SueldoPromedio"))
+
+SueldoPromedioDepto
+
 # ------------ 
 # ------------ 
 # ------------ 
