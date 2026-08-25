@@ -113,5 +113,16 @@ type(EmpleadosAttritionPCA), EmpleadosAttritionPCA.shape
 
 EmpleadosAttritionPCA[:, 0][:5]
 
-# ------------ 
+# ------------ 17. Agrega el mínimo número de Componentes Principales en columnas del frame EmpleadosAttritionPCA que logren explicar el 80% de la varianza, al frame EmpleadosAttritionFinal. Puedes usar la instrucción assign, columna por columna, llamando a cada unaC0, C1, etc., hasta las que vayas a agregar.
+
+varianza_acumulada = np.cumsum(pca.explained_variance_ratio_)
+n_componentes = int(np.argmax(varianza_acumulada >= 0.80) + 1)
+print(f"componentes necesarios para explicar el 80% de la varianza: {n_componentes}")
+print(f"varianza acumulada con esos componentes: {varianza_acumulada[n_componentes - 1]:.4f}")
+
+for indice_componente in range(n_componentes):
+    EmpleadosAttritionFinal = EmpleadosAttritionFinal.assign(**{f"C{indice_componente}": EmpleadosAttritionPCA[:, indice_componente]})
+
+EmpleadosAttritionFinal.head()
+
 # ------------ 
