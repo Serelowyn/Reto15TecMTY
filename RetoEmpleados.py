@@ -35,6 +35,10 @@ print(fechas_invalidas.tolist())#hay una fecha que dice un dia que no existe, co
 
 EmpleadosAttrition["Year"] = (EmpleadosAttrition["HiringDate"].str.split("/").str[-1].astype(int))
 
-# ------------ 
+# ------------ 6. Crea una columna llamada YearsAtCompany que contenga los años que el empleado lleva en la compañía hasta el año 2018. Para su cálculo, usa la variable Year que acabas de crear.
+
+EmpleadosAttrition["YearsAtCompany"] = 2018 - EmpleadosAttrition["Year"]
+EmpleadosAttrition[["HiringDate", "Year", "YearsAtCompany"]].head()
+
 # ------------ 
 # ------------ 
