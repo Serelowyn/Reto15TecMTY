@@ -86,7 +86,11 @@ for col in variables_categoricas:
     encoders[col] = le
     print(col, "->", dict(zip(le.classes_, le.transform(le.classes_))))
 
-# ------------ 
+# ------------ 14. Ahora debes hacer la evaluación de las variables para quedarte con las mejores. Calcula la correlación lineal de cada una de las variables con respecto al Attrition.
+
+correlaciones = EmpleadosAttrition.corr()["Attrition"].sort_values(key=abs, ascending=False)
+correlaciones
+
 # ------------ 
 # ------------ 
 # ------------ 
