@@ -2,7 +2,7 @@
 
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler, LabelEncoder
 
 # ------------ Fin de las Importaciones
 
@@ -71,7 +71,21 @@ scaler = MinMaxScaler()
 EmpleadosAttrition["MonthlyIncome"] = scaler.fit_transform(EmpleadosAttrition[["MonthlyIncome"]])
 EmpleadosAttrition["MonthlyIncome"].describe()
 
-# ------------ 
+# ------------ 13. Todo parece indicar que las variables categóricas que quedan sí son importantes para obtener la variable de salida. Convierte todas las variables categóricas que quedan a numéricas:
+
+"""overtime es una variable categorica pero anteriormente no hice ninguna conversion por lo que se añade aca, en la siguiente lista de variables categoricas"""
+variables_categoricas = [
+    "BusinessTravel", "Department", "EducationField",
+    "Gender", "JobRole", "MaritalStatus", "OverTime", "Attrition"
+]
+
+encoders = {}
+for col in variables_categoricas:
+    le = LabelEncoder()
+    EmpleadosAttrition[col] = le.fit_transform(EmpleadosAttrition[col])
+    encoders[col] = le
+    print(col, "->", dict(zip(le.classes_, le.transform(le.classes_))))
+
 # ------------ 
 # ------------ 
 # ------------ 
