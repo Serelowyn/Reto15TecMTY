@@ -125,4 +125,14 @@ for indice_componente in range(n_componentes):
 
 EmpleadosAttritionFinal.head()
 
-# ------------ 
+# ------------ 18. Guarda el set de datos que has formado y que tienes en EmpleadosAttritionFinal en un archivo CSV llamado EmpleadosAttritionFinal.csv. Las últimas columnas que colocaste quedarán después de la variable Attrition, lo cual no importa, pero si gustas lo puedes arreglar antes de escribir el archivo.
+
+columnas_pca = [f"C{indice_componente}" for indice_componente in range(n_componentes)]
+col_ord = [
+    col for col in EmpleadosAttritionFinal.columns
+    if col not in columnas_pca + ["Attrition"]] + columnas_pca + ["Attrition"]
+
+EmpleadosAttritionFinal = EmpleadosAttritionFinal[col_ord]
+EmpleadosAttritionFinal.to_csv("EmpleadosAttritionFinal.csv", index=False)
+
+EmpleadosAttritionFinal.head()
