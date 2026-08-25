@@ -46,14 +46,18 @@ EmpleadosAttrition = EmpleadosAttrition.rename(
     columns={"DistanceFromHome": "DistanceFromHome_km"}
 )
 
-# ------------ 8. Renombra la variable DistanceFromHome a DistanceFromHome_km.
+# ------------ 8 y 9. Renombra la variable DistanceFromHome a DistanceFromHome_km.
 
 EmpleadosAttrition["DistanceFromHome"] = (EmpleadosAttrition["DistanceFromHome_km"].str.replace(" km", "", regex=False).astype(int))
 
 """esto me garantiza que se puede conservar una columna donde aparezca la cantidad numerica y ademas especificar que son kilometros, y tambien una donde unicamente aparezca el dato numerico sin el string"""
 EmpleadosAttrition[["DistanceFromHome_km", "DistanceFromHome"]].head()
 
-# ------------ 
+# ------------ 10. Borra las columnas Year, HiringDate y DistanceFromHome_km debido a que ya no son útiles.
+
+EmpleadosAttrition = EmpleadosAttrition.drop(columns=["Year", "HiringDate", "DistanceFromHome_km"])
+EmpleadosAttrition.columns
+
 # ------------ 
 # ------------ 
 # ------------ 
