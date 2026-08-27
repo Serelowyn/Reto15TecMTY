@@ -95,7 +95,9 @@ correlaciones
 # ------------ 15. Selecciona solo aquellas variables que tengan una correlación mayor o igual a 0.1, dejándolas en otro frame llamado EmpleadosAttritionFinal. No olvides mantener la variable de salidaAttrition; esto es equivalente a borrar las que no cumplen con el límite.
 
 limite = 0.1
-variables_seleccionadas = correlaciones[correlaciones >= limite].index.tolist()
+
+"""se cambia esta linea, el unico añadido es el valor absoluto que fue el error marcado por el profesor, lo que ocasiona que el numero de variables seleccionadas sea demasiado pequeño"""
+variables_seleccionadas = correlaciones[correlaciones.abs() >= limite].index.tolist()
 
 if "Attrition" not in variables_seleccionadas:
     variables_seleccionadas.append("Attrition")
